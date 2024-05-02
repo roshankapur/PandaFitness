@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import Logo from "@/assets/Logo.png";
 import Link from "./Link";
 import { SelectedPage } from "@/shared/types";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 type Props = {
     selectedPage: SelectedPage;
@@ -11,6 +12,9 @@ type Props = {
 
 const Navbar = ({selectedPage,setSelectedPage}: Props) => {
     const flexBetween = "flex justify-between items-center";
+    const [menuIsToggled, setMenuIsToggled] = useState<boolean>(false);
+    const isMediumLargeScreen = useMediaQuery("(min-width: 1060px)");
+    
     return (
     <nav>
         <div className={`${flexBetween} fixed top-0 z-30 w-full py-6`}>
@@ -20,37 +24,47 @@ const Navbar = ({selectedPage,setSelectedPage}: Props) => {
                     <img alt="logo" src={Logo}/>
 
                     {/* nav elements on the right*/}
-                    <div className={`${flexBetween} w-full`}>
-                        {/* inner left - nav buttons*/}
-                        <div className={`${flexBetween} gap-8 text-sm`}>
-                            <Link 
-                                page="Home"
-                                selectedPage={selectedPage}
-                                setSelectedPage={setSelectedPage}
-                            />
-                            <Link 
-                                page="Benefits"
-                                selectedPage={selectedPage}
-                                setSelectedPage={setSelectedPage}
-                            />
-                            <Link 
-                                page="Our Classes"
-                                selectedPage={selectedPage}
-                                setSelectedPage={setSelectedPage}
-                            />
-                            <Link 
-                                page="Contact Us"
-                                selectedPage={selectedPage}
-                                setSelectedPage={setSelectedPage}
-                            />
-                        </div>
+                    {isMediumLargeScreen ? (
+                        <div className={`${flexBetween} w-full`}>
+                            {/* inner left - nav buttons*/}
+                            <div className={`${flexBetween} gap-8 text-sm`}>
+                                <Link 
+                                    page="Home"
+                                    selectedPage={selectedPage}
+                                    setSelectedPage={setSelectedPage}
+                                />
+                                <Link 
+                                    page="Benefits"
+                                    selectedPage={selectedPage}
+                                    setSelectedPage={setSelectedPage}
+                                />
+                                <Link 
+                                    page="Our Classes"
+                                    selectedPage={selectedPage}
+                                    setSelectedPage={setSelectedPage}
+                                />
+                                <Link 
+                                    page="Contact Us"
+                                    selectedPage={selectedPage}
+                                    setSelectedPage={setSelectedPage}
+                                />
+                            </div>
 
-                        {/* inner right - signup/signin*/}
-                        <div  className={`${flexBetween} gap-8`}>
-                            <p>Sign In</p>
-                            <button>Become a Member</button>
+                            {/* inner right - signup/signin*/}
+                            <div  className={`${flexBetween} gap-8`}>
+                                <p>Sign In</p>
+                                <button>Become a Member</button>
+                            </div>
                         </div>
-                    </div>
+                        //mobile view
+                        ) : (
+                            <button
+                                className="rounded-full bg-secondary-500 p-2"
+                                onClick={() => setMenuIsToggled(!menuIsToggled)}
+                            >
+                                <Bars3Icon className="h-6 w-6 text-white"/>
+                            </button>
+                        )}
                 </div>
             </div>
         </div>
