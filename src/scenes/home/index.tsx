@@ -40,7 +40,7 @@ const Home = ({setSelectedPage}: Props) => {
                     }}
                 >
                     <div className="relative">
-                        <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
+                        <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext before:h-20">
                             <img alt="home-page-text" src={HomePageText} />
                         </div>
                     </div>
@@ -88,9 +88,9 @@ const Home = ({setSelectedPage}: Props) => {
             <div className="h-[150px] w-full bg-primary-100 py-10">
                 <div className="mx-auto w-5/6">
                     <div className="flex w-3/5 items-center justify-between gap-8">
-                        <img src={SponsorForbes} alt="forbes"/>
-                        <img src={SponsorRedBull} alt="redbull"/>
-                        <img src={SponsorFortune} alt="fortune"/>
+                        <img className="w-[140px]" src={SponsorForbes} alt="forbes"/>
+                        <img className="h-[32px]" src={SponsorRedBull} alt="redbull"/>
+                        <img className="w-[140px]" src={SponsorFortune} alt="fortune"/>
                     </div>
                 </div>
             </div>
