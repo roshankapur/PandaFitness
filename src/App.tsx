@@ -46,9 +46,7 @@ function App() {
         <ContactUs 
           setSelectedPage={setSelectedPage} 
         />
-        <Footer 
-          setselectedPage={setSelectedPage}
-        />
+        <Footer/>
 
       </div>
       
