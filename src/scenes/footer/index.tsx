@@ -1,5 +1,4 @@
 import Logo from "@/assets/Logo.png";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Footer = () => {
   return (
